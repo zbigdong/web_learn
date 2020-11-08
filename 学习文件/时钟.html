@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .clock-wrapper{
+            width: 300px;
+            height: 300px;
+            border: 10px solid black;
+            border-radius: 50%;
+            margin: 100px auto;
+            position:relative;
+            background: url(img/1024px-Analogue_clock_face.svg.png) no-repeat center / 100%;
+        }
+
+        .clock-wrapper>div{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        /*设置三个针容器*/
+        .sec-wrapper{
+            width: 96%;
+            height: 96%;
+            /*background-color: skyblue;*/
+            border-radius: 50%;
+            animation: zhuan 60s steps(60) infinite;
+        }
+
+        .min-wrapper{
+            width: 88%;
+            height: 88%;
+            /*background-color: rosybrown;*/
+            border-radius: 50%;
+            animation: zhuan 360s linear infinite;
+        }
+        .hour-wrapper{
+            width: 80%;
+            height: 80%;
+            /*background-color: palegreen;*/
+            border-radius: 50%;
+          
+            animation: zhuan 7200s linear infinite;
+            /* transform: rotateZ(90deg); */
+        }
+    /*    设置三个针*/
+        .sec{
+            height: 52%;
+            width: 3px;
+            background-color: black;
+            margin:0 auto;
+        }
+        .min{
+            height: 52%;
+            width: 5px;
+            background-color: black;
+            margin:0 auto;
+        }
+        .hour{
+            height: 52%;
+            width: 7px;
+            background-color: black;
+            margin:0 auto;
+            
+        }
+
+    @keyframes zhuan {
+            0%{
+                transform: rotateZ(90deg);
+            }
+            100%{
+                transform: rotateZ(360deg);
+            }
+        }
+        
+    </style>
+
+    <script>
+        function showTime(){
+
+    var mytime = new Date( ); 
+    
+	var miao = mytime.getSeconds();
+    mz.style.transform = "rotateZ("+ miao*6  +"deg)";
+    
+	var fen = mytime.getMinutes();
+    fz.style.transform = "rotateZ("+ (fen*6+miao*0.1)  +"deg)";
+    
+	var shi = mytime.getHours();
+	sz.style.transform = "rotateZ("+ (shi*30+fen*0.5)  +"deg)";
+	
+	
+// //	电子时钟
+// 	var shiShi = document.getElementById("shiShi");
+// 	var shiGe = document.getElementById("shiGe");
+// 	var fenShi = document.getElementById("fenShi");
+// 	var fenGe = document.getElementById("fenGe");
+// 	var miaoShi = document.getElementById("miaoShi");
+// 	var miaoGe = document.getElementById("miaoGe");
+	
+// 	shiShi.src = "images/num"+Math.floor(shi/10) +".png";
+// 	shiGe.src = "images/num"+ shi%10  +".png";
+// 	fenShi.src = "images/num"+ Math.floor(fen/10)+".png";
+// 	fenGe.src = "images/num"+  fen%10+".png";
+// 	miaoShi.src = "images/num"+ Math.floor(miao/10) +".png";
+// 	miaoGe.src = "images/num"+ miao%10 +".png";
+	
+// }
+var myset = setInterval(function(){ 
+	showTime();
+},1000);
+//	电子时钟 end
+
+    </script>
+</head>
+<body>
+<div class="clock-wrapper">
+    <div class="hour-wrapper">
+        <div class="hour" id="sz"></div>
+    </div>
+    <div class="min-wrapper">
+        <div class="min" id="fz"></div>
+    </div>
+    <div class="sec-wrapper">
+        <div class="sec" id="mz"></div>
+    </div>
+</div>
+</body>
+</html>
