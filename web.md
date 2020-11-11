@@ -498,3 +498,104 @@ clera:both;}
 
 ○ 我们可以通过z-index来设置定位元素的层级。 ○ 它需要一个整数作为参数，值越大层级越高，层级越高越优先显示，层级一样优先 显示后边的， ○ 祖先元素的层级再高也不会盖住后代元素
 
+## 过度
+
+transition
+
+1. 设置过渡效果
+
+2. 可以同时设置过度的所有效果
+
+3. 过度属性
+
+   transition -durarion
+
+4. 过度的延时
+
+   transition-delay
+
+   过度的时间函数
+
+   transition-timing-function
+
+## 动画
+
+关键帧关键帧用来指定动画的每一步执行的位置
+
+**创建关键帧**
+
+@keyframes名字{
+
+from{}
+
+50%{}
+
+to{}
+
+}
+
+### **动画的属性**
+
+**动画的名字**
+
+animation-name
+
+**动画持续的时间**
+
+animation-duration
+
+**动画的延时**
+
+animation-delay
+
+动画播放的状态
+
+animation-play-state
+
+### 变形
+
+transform
+
+可以用来设定元素的位置角度的大小的改变
+
+translateX() translateY() translateZ()
+
+位移函数
+
+rotateX() rotateY()rotataZ()
+
+旋转的函数
+
+
+
+## 渐变
+
+css中可以通过背景来设置渐变效果
+
+关于渐变的注意事项渐变的是图片不是颜色
+
+我们需要通过background或者background的简写属性来设置渐变效果
+
+### 线性渐变
+
+linear-gradient(角度，颜色 位置，颜色 位置，颜色 位置)
+
+例子：
+
+background-image：linear-gradient(red,orange,yellow)
+
+![image-20201111194813481](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111194813481.png)
+
+background-image:;inear-gradinet(toright,red,orange,yellow);
+
+![image-20201111194821966](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111194821966.png)
+
+### 径向渐变
+
+radial-gradient(形状at位置 ，颜色颜色颜色)
+
+background-image:radial-gradinet(green,yellow,orange)
+
+![image-20201111195102519](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111195102519.png
+
+![image-20201111195227528](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111195227528.png)
