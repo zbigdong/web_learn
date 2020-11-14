@@ -599,3 +599,14 @@ background-image:radial-gradinet(green,yellow,orange)
 ![image-20201111195102519](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111195102519.png
 
 ![image-20201111195227528](C:\Users\30278\AppData\Roaming\Typora\typora-user-images\image-20201111195227528.png)
+
+## 圣杯布局
+
+三个同级div 一个宽度百分之百，一个漂浮左边margin-left:-100%, 一个漂浮左边-200%
+
+可以保持左右不变中间自调节
+
+### 伪元素
+
+before after first-letter first-line selection
+
