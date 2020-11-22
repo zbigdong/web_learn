@@ -87,66 +87,7 @@ ul{
 }
 ```
 
-# CSS里面的变量:
-
-html{--name:values;}
-
-# 弹性盒子
-
-display inline-flex和flex两种
-
-要先设置弹性容器；
-
-flex 简写三个属性值
-
-flex: flex-grow flex-shrink flex-basis控制增长 缩减 默认长度；
-
-```
-/*
-    每一个元素缩减多少，有元素的 flex-basis flex-shrink 共同决定
-        溢出的大小（200）
-        ----------------------------
-        第一个元素 flex-basis *  flex-shrink +  第二个元素 flex-basis *  flex-shrink
-
-        200 除以 400 = 0.5
-
-        第一个元素缩减 = flex-shrink * 0.5 * flex-basis
-        第一个元素缩减 = flex-shrink * 0.5 * flex-basis
 
 
 
-*/
-```
-
-## 设置方向
-
-flex-direction:**column; row;**
-
-row-reverse(自右向左)
-
-column 主轴自上到下；同理；
-
-flex-wrap:wrap;设置换行
-
-flex-flow: column wrap;
-
-flex-shrink:0;缩小；
-
-## 设置间距对齐方式
-
-justify-content:space between;将空白区域平均分配到弹性元素之间；
-
-around将空白空间设置到袁术的前后
-
-space-evenly将空白元素设置到元素的一侧；
-
-stretch；拉伸使元素充满盒子
-
-
-
-**align-items设置对齐方式**
-
-
-
-# 视图
 

@@ -1,0 +1,270 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  text-decoration: none;
+}
+//750的画布
+//100vw=750px
+//1vw=7.5px
+//1px=0.1333vw
+@main_width:1680px;
+@top-bar-color:#24253d;
+@root-font-size: 100/750vw * 20;
+//弹性盒子
+.fbox{
+  display: flex;
+  justify-content: space-between;
+
+}
+//竖直方向column
+.fcbox:extend(.fbox){
+  flex-direction: column;
+}
+
+html{
+  font-family: "Microsoft YaHei", sans-serif;
+  font-size: 20px;
+  color:wheat;
+}
+//img{
+//  width: 60px;
+//  height: 150px;
+//}
+p{
+  font-size: 20px;
+  color: black;
+}
+.head{
+  width: 100%;
+  background-color: @top-bar-color;
+}
+.dh_head{
+  width: @main_width;
+  margin: 0 auto;
+  background-color: @top-bar-color;
+}
+.topbar{
+  height: 60px;
+  width: auto;
+  margin:0 10px;
+  background-color: @top-bar-color;
+  line-height: 60px;
+
+}
+//.dh_left{
+//  margin-left: 30px;
+//}
+
+a:hover{
+color: white;
+}
+.hid{
+  position: relative;
+}
+.hid:hover .vis{
+
+  display: block;
+}
+#but{
+  width: 150px;
+  a{
+    margin-left:30px ;
+  }
+  a:hover{color: orange;}
+}
+#but:hover{
+  background-color: whitesmoke;
+  color:black;
+}
+.vis{
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: white;
+  position:absolute;
+  top:60px;
+  left: -30px;
+  display: none;
+
+}
+.vis span{
+  font-size: 15px;
+  color:black;
+  display: block;
+  margin: 0 auto;
+  //background-color: lawngreen;
+  position: absolute;
+  top:80px;
+  left: 5px;
+}
+
+#vis{
+  width:300px;
+  height: 100px;
+  left: -150px;
+}
+.t2bar{
+  width: @main_width;
+
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+
+.ss a{
+  display: block;
+  width: 52px;
+  height: 52px;
+  font-size: 40px;
+  background-color: #969393;
+  margin-right: 20px;
+}
+.ss a:hover{
+  background-color: orange;
+}
+.dhtop2{
+  width: auto;
+  margin-top: 15px;
+  //background-color: #969393;
+}
+.dhtop2:nth-child(2){
+  margin-left: 230px;
+}
+.bdr{
+  display: none;
+  position: absolute;
+  top:250px;
+  left:10px;
+  width: 100%;
+  height: 0;
+  border-top:1px solid #969393;
+  border-bottom:1px solid #969393;
+  overflow: hidden;
+  transition: height 0.5s;
+
+}
+.tc{
+  width: @main_width;
+  margin:0 auto;
+  .ph{
+    position: relative;
+    margin-top: 30px;
+    span{
+      font-size: 15px;
+      color:black;
+      display: block;
+      width: 100px;
+      height: 30px;
+      margin: 0 auto;
+      background-color: white;
+      border: none;
+      position: absolute;
+      top:180px;
+      left: 40px;
+
+    }
+  }
+  span{
+  display: block;
+    width: 1px;
+    height: 100px;
+    background-color: #969393;
+    border: 1px solid gray;
+    //border-radius: 50px;
+    margin-top: 30px;
+  }
+}
+.t2bar:hover .bdr{
+ // display: block;
+  height: 240px;
+}
+
+.main {
+  width: @main_width;
+  margin:20px auto;
+
+  height: 600px;
+  .right{
+    width:@main_width - 200px ;
+    height: 600px;
+    i{
+      position: absolute;
+      top:50%;
+      font-size: 100px;
+      color: black;
+    }
+  .point li{
+    position: absolute;
+    top:700px;
+    left: 1500px;
+    list-style: aqure;
+    color: black;
+    font-size: 100px;
+    text-decoration: black;
+    z-index: 101;
+  }
+  }
+  //左导航
+  .left{
+    height: 500px;
+    width: 200px;
+    background-color: #969393;
+
+  }
+  .left div{
+
+  width: 200px;
+    //height: 70px;
+    background-color: #969393;
+    //border: 1px solid red;
+    line-height: 60px;
+   a{
+     margin-left: 25px;
+     color: white;
+   }
+  }
+  .left div:hover{
+    background-color: orange;
+  }
+}
+#jg{
+  margin-top: 50px;
+  //height: 70px;
+  //line-height: 80px;
+
+}
+
+.guding{
+  width: 80px;
+
+  position: fixed;
+  bottom:370px;
+  right:0;
+
+
+}
+.guding i{
+  //display: block;
+  //width: 50px;
+  //height: 50px;
+  font-size: 50px;
+  margin-top: 20px;
+}
+
+.mbanner{
+  width: @main_width;
+  margin:0 auto;
+  div{
+    width: 418px;
+    height: 300px;
+    background: #969393;
+    flex-wrap: wrap;
+  }
+  div.am{
+    width: 136px;
+    height: 147px;
+    background: #c657ff;
+    border: 1px solid lightblue;
+    border-radius: 12px;
+  }
+}

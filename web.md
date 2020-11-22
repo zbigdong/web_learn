@@ -610,3 +610,122 @@ background-image:radial-gradinet(green,yellow,orange)
 
 before after first-letter first-line selection
 
+# 视口
+
+## css元素和物理元素
+
+1. 在pc 端一般情况下一个css像素对应1个物理像素
+2. 但是在移动端，通常情况1个CSS像素应该对应多个物理像素，才可以确保网页可以正常 的浏览
+
+## 浏览器中用于呈现网页的区域叫视口
+
+1. 手机一般的默认视口都是 980，所以在移动端默认视口在浏览网页时体验是非常的差的 - 
+2. iphonex 1125 / 3 = 375 （完美视口）
+3.  iphone5 640 / 2 = 320
+
+利用媒体查询，可以根据设备的能力应用特定的CSS样式。比如，可以根据视口宽度、屏幕宽 高比和朝向等，来改变页面中元素的样式。
+
+##  **媒体查询语法：**
+
+ 1 @media 查询条件 { 2 样式 3 }
+
+## **媒体类型**
+
+\- all 适用于所有的设备
+
+- print 适用于打印样式 
+- screen 适用于屏幕 
+- speech 适用于阅读器
+
+## **媒体功能**
+
+-  width, min-width, max-width 视口宽度
+
+- height, min-height, max-height 视口高度
+
+- aspect-ratio 宽高比 
+
+- orientation 视口方向(portrait纵向 landscape横向) 
+
+- resolution 像素密度
+
+  ## **运算符**
+
+- and 把两个或多个特性连接到一起，要求每一个特性必须要成立，查询才会生效。 
+
+- not 对所有结果取反，如果所有条件都满足则不应用样式（必须写在开头）
+
+- only  只有新版浏览器才识别能识别的关键字，用于区分不支持的浏览器 -
+- ‘   把两个或多个特性连接到一起，要求有一个特性满足即可成立
+
+## 断点
+
+断点：断点就是某个宽度的临界点，跨过这个点布局就会发生显著的变化。
+
+ 超小屏幕 768以下
+
+ 小屏幕 大于等于 768 
+
+中等屏幕 大于等于 992
+
+ 大屏幕 大于等于 1200
+
+# CSS里面的变量:
+
+html{--name:values;}
+
+# 弹性盒子
+
+display inline-flex和flex两种
+
+要先设置弹性容器；
+
+flex 简写三个属性值
+
+flex: flex-grow flex-shrink flex-basis控制增长 缩减 默认长度；
+
+```
+/*
+    每一个元素缩减多少，有元素的 flex-basis flex-shrink 共同决定
+        溢出的大小（200）
+        ----------------------------
+        第一个元素 flex-basis *  flex-shrink +  第二个元素 flex-basis *  flex-shrink
+
+        200 除以 400 = 0.5
+
+        第一个元素缩减 = flex-shrink * 0.5 * flex-basis
+        第一个元素缩减 = flex-shrink * 0.5 * flex-basis
+
+
+
+*/
+```
+
+## 设置方向
+
+flex-direction:**column; row;**
+
+row-reverse(自右向左)
+
+column 主轴自上到下；同理；
+
+flex-wrap:wrap;设置换行
+
+flex-flow: column wrap;
+
+flex-shrink:0;缩小；
+
+## 设置间距对齐方式
+
+justify-content:space between;将空白区域平均分配到弹性元素之间；
+
+around将空白空间设置到袁术的前后
+
+space-evenly将空白元素设置到元素的一侧；
+
+stretch；拉伸使元素充满盒子
+
+
+
+**align-items设置对齐方式**
+
