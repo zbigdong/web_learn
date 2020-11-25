@@ -1,0 +1,187 @@
+# Javascript
+
+Javascript简介（是什么）
+	谁在哪什么时候用多长时间开发的，是一门什么样的语言
+
+​	美国 布莱登·艾奇  1995年 10天	
+​	javascript  是一门动态的、弱类型的、解释型的脚本语言
+​	动态：只有在执行的时候，才能确定数据类型
+​	弱类型：变量数据的类型不是确定的，可以随意的进行改变；
+​	解释型：相对编译型来说，编译型计算机在执行之前需要把程序进行编译，完事之后才执行
+​		解释型，不需要编译，执行的时候，一行一行去解释执行；
+​	
+​	脚本：一般只要是脚本语言，都代表可以嵌在其它的语言当中进行执行；
+
+​	起初叫什么  后来怎么叫Javascript  （了解）
+​		livescript  sun 开发了java    借助java的名字火了一把   
+​		把livescript 改为 javascript
+​		java和javascript
+
+1. ​	html    负责结构
+   2	css     负责样式
+   ​	3 js      负责行为（动态效果）
+
+TB PB ZB YB
+
+# Js组成部分
+
+1. ECMAscriot 负责js的语法部分
+2. DOM document object model 文档对象模型（操作元素）
+3. BOM browser object model 浏览器对象模型（操作浏览器）
+
+# Js执行特点
+
+从上到下一行一行执行，每句都要进行;结尾，分号不是必须的
+
+js可以写行内js必须要链接事件
+
+# 变量
+
+
+
+**什么是程序？什么是进程？**
+
+​	程序：代码的集合，一般指的是文件，程序是静态的
+​	进程：运行的程序，就被称作进程，进程是动态的
+
+
+​		
+
+​	程序其实就是一个输入  运算   输出的过程
+​	那么我们要对一个数据进行运算，然后进行输出，这个数据就需要有一个东西去保存
+​	这个东西，就是我们所说的变量，本质上是一个容器（内存空间）；
+
+
+
+## 1、定义变量，
+
+   先定义后使用， 变量的初始化  （var和不写的区别）   变量的本质，内存的结构图 
+
+​	定义变量使用 var关键字   先定义后使用，定义好之后，可以给变量赋值（存值）
+​	如果定义变量不使用var，那么变量必须要赋值，不赋值报错未定义；
+​	建议，我们在使用的时候，都带上var去定义变量。
+
+## 	2、变量的命名规范（组成，大驼峰，小驼峰，下划线）
+
+​		变量的名字由：数字  字母  下划线 以及 $组成
+​			      不能以数字开头
+​			      不能和关键字以及保留字同名
+​	
+​			      变量名我们一般要见名思意
+
+
+​		大驼峰：变量名所有的单词首字母大写                      var ClassNumber        
+​		小驼峰：变量名第一个单词首字母小写，其它的大写	      var classNumber  前端人员最常用的是这个，只有特定情况用大驼峰；
+​		下划线：单词和单词之间用下划线连接	              var class_number	
+
+
+
+## 	3、关键字和保留字
+
+​		javascript的关键字
+
+```js
+	break   case   catch   continue   default   delete   do
+		else   finally   for   function   if   in   instanceof
+		new   return   switch   this   throw   try   typeof
+		var   void   while   with
+```
+
+
+​		javascript的保留字
+
+```js
+abstract   boolean   byte   char   class   const   debugger   double
+		enum     export    extends       final   float   goto       implements
+		import     int       interface     long    native  package    private
+		protected  public    short         static  super   synchronized
+		throws    transient  volatile 
+```
+
+#  数据类型
+
+## 1、数据类型（存储的数据的类型）
+
+​	基本数据类型和对象(复杂)数据类型
+​		基本数据类型（值类型）
+​			number    string   boolean   undefined   null
+
+​		对象数据类型（对象类型，后续）
+
+## 2、基本使用场景
+
+​	**数值类型**    整数   小数   科学记数法  **2进制(0b)   8进制(0)   16进制(0x)**
+
+
+​		
+
+​	**字符串**      单引号或者双引号包含  空字符串  和  空白字符串
+​	布尔	    true或者false
+​	**undefined**   定义的变量没有赋值
+​	**null**        定义的变量赋值为null(一般是对对象进行初始化使用或者是删除一个对象的时候用到)
+
+## 3、数据类型的判断 
+
+​	typeof判断
+​	typeof的结果是什么类型
+​		Typeof typeof 5
+​	typeof的判断基本数据类型的特殊情况
+​		null
+
+## 初始变量约定成俗
+
+```js
+var sum = 0;
+
+var carName = 'car'
+var isClose = ture;
+//var a = undefined;基本不用，不能叫做初始化 
+var dog = null; //代表要存储关于狗的对象
+```
+
+
+
+# 运算符和表达式
+
+​	什么是运算符  什么是表达式   
+
+运算符：参与运算的符号
+表达式：由变量或常量和运算符组成的式子   表达式是有值的*****
+
+1、算术  算术表达式
+
+取余的作用：
+	1、可以拿到余数
+	2、可以拿到一个范围
+	任何的一个数对78取余，余数永远是在0~77之间  包含0和77      （num）%78 + 1
+
+ 
+
+​	++ -- 作用及注意事项
+​	自增自减运算符，这个运算符只能和变量组成表达式
+​	**++在后**，先赋值（先把a的值赋值给表达式）  后++ （后让a的值+1）
+​	**++在前**，先++(先让a的值+1)  后赋值（后把a的值赋值给表达式）
+
+​	a++
+​	++a
+​	a--
+​	--a
+
+# 数据类型转换
+
+## 	1、数据类型强制转换
+
+​		Number()  强制将一个其它类型数据转化为数字类型，转不了就是NaN
+​		String()    强制将一个其它类型数据转化为字符串类型
+​		Boolean()  强制将一个其它类型数据转化为boolean类型
+​		怎么快速将一个字符串‘23’转化为数字23
+
+## 2、数据类型隐式转换
+
+​	各种类型在适当的场合会发生隐式转换
+​	主要是运算过程和判断过程中
+
+## 3、数据类型手动转换（其实就是在字符串当中提取数字）
+
+​	parseInt()
+​	parseFloat()
