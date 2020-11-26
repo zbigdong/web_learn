@@ -120,13 +120,17 @@ abstract   boolean   byte   char   class   const   debugger   double
 ​	**undefined**   定义的变量没有赋值
 ​	**null**        定义的变量赋值为null(一般是对对象进行初始化使用或者是删除一个对象的时候用到)
 
-## 3、数据类型的判断 
+## 3、数据类型的判断 	
 
-​	typeof判断
+```
+typeof判断
 ​	typeof的结果是什么类型
 ​		Typeof typeof 5
 ​	typeof的判断基本数据类型的特殊情况
 ​		null
+```
+
+
 
 ## 初始变量约定成俗
 
@@ -254,3 +258,10 @@ var dog = null; //代表要存储关于狗的对象
 
 ​	如果第一个表达式的值为真，那么把冒号前面的值，赋值给整个表达式
 ​	如果第一个表达式的值为假，那么把冒号后面的值，赋值给整个表达式；
+
+## 怎么快速将一个字符串‘23’转化为数字23      '23' - 0;
+
+​		Number('23');
+​		'23' - 0;
+​		parseInt('23');
+​		parseFloat('23');
