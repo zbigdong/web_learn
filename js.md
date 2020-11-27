@@ -17,9 +17,9 @@ Javascript简介（是什么）
 ​		把livescript 改为 javascript
 ​		java和javascript
 
-1. ​	html    负责结构
-   2	css     负责样式
-   ​	3 js      负责行为（动态效果）
+1	html    负责结构
+2	css     负责样式
+​3    js      负责行为（动态效果）
 
 TB PB ZB YB
 
