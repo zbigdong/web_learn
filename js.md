@@ -464,3 +464,119 @@ Immediately Invoked Function Expression，意为立即调用的函数表达式�
 定时器
 ajax
 生命周期回调函数
+
+# 对象
+
+## 对象的创建方法
+
+​	a)	字面量创建
+​			var obj = {
+​				name:'zly',
+​				age:32,
+​				sing:function(){};
+​			}
+​	b)	New Object
+​			var obj = new Object();
+​	c)	工厂函数模式
+
+## 对象的操作及遍历（增删改查）
+
+var a = 'gender';
+		var obj = {};
+		obj.name = 'zs';
+		obj["age"] = 30;
+		obj[a] = 'male';
+
+
+		delete obj.name
+	
+		obj.name = 'lisi';    有则更改无则增加
+	
+		var name = obj.name;
+	
+		读   方式 .语法  []语法
+		写   
+		注意点：.语法和[]语法   还有变量
+		遍历   for in循环进行遍历对象
+
+
+		for(var key in obj){
+	
+			console.log(key,obj[key]);
+	
+		}
+## this
+
+不同场合this的指向不同
+		window对象简介  
+			浏览器窗口对象，代码执行的时候所有的一切都是包含在窗口对象下的. 
+
+构造函数一般用于函数实例化对象
+
+## new
+
+new关键字实例化对象的	
+		1、开辟内存空间
+		2、this指向该内存
+		3、执行函数
+		4、生成对象实例
+
+对象的本质就是一块内存
+
+## 原型对象和原型链
+
+```
+Person.prototype.sing
+```
+
+![image-20201201164831630](D:\web_learn\image-20201201164831630.png)
+
+### 原型链概念
+
+对象在调用方法或则属性的时候会首先从自己的空间中去找，如果找不到去直接的原型空间中寻找（自己的构造函数的对象）。
+
+apply 和 call可以让一个对象使用另一个对象方法：
+
+然提供一个实例去调用windowD方法
+
+函数或则方法.apply或则.call
+
+ var result = add.apply (cat1,[10,20]);
+
+使猫这个对象调用add加这个函数；
+
+##  内置对象JSON
+
+​		在前端json串的格式就是对象或者对象的数组；
+​		JSON对象的方法: parse， stringify
+
+## Math工具对象
+
+	1.	Math对象方式的使用: round, floor, radom, cell, max  min  PI  pow
+	2.	案例：
+		1. 随机数点名
+		2. 随机生成验证码
+
+## Date日期对象
+
+​	1.	Date对象的方法
+​		var date = new Date();
+​		console.log(date);
+​		console.log(date.getFullYear());
+​		console.log(date.getMonth());
+​		console.log(date.getDate());
+​		console.log(date.getHours());
+​		console.log(date.getMinutes());
+​		console.log(date.getSeconds());
+​		console.log(date.getYear());//已经废弃
+​		console.log(date.toLocaleTimeString());
+​		console.log(date.toLocaleDateString());
+​		console.log(date.getTime());//1970 年 1 月 1 日之间的毫秒数
+
+​	案例：
+	1. 格式化日期
+	2. 封装函数实现格式化日期
+
+## 包装对象
+
+​	基本数据类型也可以使用.调用方法   
