@@ -547,19 +547,62 @@ apply 和 call可以让一个对象使用另一个对象方法：
 
 ##  内置对象JSON
 
-​		在前端json串的格式就是对象或者对象的数组；
-​		JSON对象的方法: parse， stringify
+JSON是js当中的一个内置对象，里面封装了对json格式数据的操作方法；
+json是一种数据格式，是前后端目前数据交互的主要格式（xml）
+		
+
+json通常情况下说的是字符串也叫json串
+在前端json串的格式就是对象或者对象的数组，只不过要把这些数据转化成字符串形式；
+
+在前端json串的格式就是对象或者对象的数组；
+
+###   JSON对象的方法: 
+
+parse， stringify
+
+
 
 ## Math工具对象
 
-	1.	Math对象方式的使用: round, floor, radom, cell, max  min  PI  pow
-	2.	案例：
-		1. 随机数点名
-		2. 随机生成验证码
+```js
+ //round, floor, radom, cell, max  min  PI  pow
+    console.log(Math.floor(1.23));//1
+    //floor向下取整
+    console.log(Math.ceil(1.2));//2
+    //向上取整
+    console.log(Math.round(1.5))//2
+    //四舍五入
+    console.log(Math.random())
+    //随机数返回0-1之间的数包含-0不包含1；
+    console.log(Math.max(1.23,432,54,23,2))//432
+    console.log(Math.PI)//3.1415...
+    console.log(Math.pow(2,3))//8的四次方
+    console.log(Math.sin(Math.PI/2))//三角函数在math中全部要使用弧度而不是角度；
+
+    // //随机数点名
+ 
+    function getrandom(min,max){
+        return Math.floor(Math.random()*(max-min+1)+min)
+    }
+
+    console.log(getrandom(1,20))
+  //验证码
+    function getrandomcode(){
+        var acl= 'qwertyuiopasdfghjklzxcvbnm1234567890'
+        code = ''
+        for(var i = 0;i<4;i++){
+            code += acl[Math.floor(Math.random()*acl.length)];
+
+        }
+        return code
+    }
+
+    console.log(getrandomcode())
+```
 
 ## Date日期对象
 
-​	1.	Date对象的方法
+	1.	Date对象的方法
 ​		var date = new Date();
 ​		console.log(date);
 ​		console.log(date.getFullYear());
@@ -607,3 +650,7 @@ a==null 是专门用来判断null的 如果相同就是null
 ![堆栈和内存中数据展现](D:\web_learn\堆栈和内存中数据展现.png)栈  ➡ 堆
 
 执行之后函数环境先释放内存，堆里面的值还在，但是没有人指向了，论为垃圾内存，直到下一次占用它再释放它。null是用来初始化和释放变量的
+
+# 
+
+​	
