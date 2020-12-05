@@ -521,13 +521,17 @@ var a = 'gender';
 			console.log(key,obj[key]);
 	
 		}
-## this
+# this
 
 不同场合this的指向不同
 		window对象简介  
 			浏览器窗口对象，代码执行的时候所有的一切都是包含在窗口对象下的. 
 
 构造函数一般用于函数实例化对象
+
+## var that =this;
+
+this指的是当前的对象。 that是一个临时的变量，用于保存当前对象的this状态。（that可以随便取名
 
 ## new
 
@@ -667,6 +671,138 @@ a==null 是专门用来判断null的 如果相同就是null
 
 执行之后函数环境先释放内存，堆里面的值还在，但是没有人指向了，论为垃圾内存，直到下一次占用它再释放它。null是用来初始化和释放变量的
 
-# 
+# **DOM**
 
-​	
+​	     ![dom文档树](D:\web_learn\dom文档树.png)                                           
+
+## window.onload
+
+页面加载完成事件
+
+window.onload = function(){
+
+}等待页面完成的加载的程序
+
+## DOm操作
+
+获取DOM对象，操作DOM对象，事件绑定，操作元素属性
+	1. 	### document.getElementById
+	
+			这个是document下的一个方法，通过id获取到相关元素  封装为dom对象返回
+	​		如果没有id没办法获取
+
+2.	### 点击事件
+	
+	​	**事件三要素  	事件源 （承受事件的对象）  	   事件           事件处理回调函数**
+	​	事件处理三大步	获取事件源DOM对象   添加事件监听   书写处理回调
+	​	事件写好之后可以重复触发执行；setA
+
+3.	### 案例驱动: 修改元素的属性
+	
+	1. 点击按钮修改图片的路径
+	
+	2. 点击按钮修改a标签的路径
+	
+3. 点击按钮修改多选框选中
+	
+4. setAttribute和getAttribute的用法
+		.语法和他们有啥区别？一个设置一个调用
+
+	​	
+	
+		在操作元素属性的时候，.语法只能操作元素天生具有的属性，如果是自定义的属性，通过.语法是无法操作的；
+		
+		只能通过 setAttribute和getAttribute去操作；
+		
+		 **setAttribute**和**getAttribute**是通用的方法，无论元素天生的还是自定义的都可以操作；
+
+
+
+​	**5、点击按钮修改p标签的背景颜色（通过改变类名实现）**
+
+```js
+className 
+```
+
+## 循环绑定事件+操作元素内容，操作元素内容
+
+document.getElementByTagName Ie8以下不支持
+
+document.getElementByClassName   querySelect 和 querySelectAll获取dom元素
+	document.getElementById  只能通过ID去获取元素 并且只能获取一个元素返回
+	document.getElementByTagName    只能通过标签名去获取，并且获取到是多个返回一个数组，哪怕标签只有一个也是数组
+	document.getElementByClassName  只能通过类名去获取，并且获取到是多个返回一个数组，哪怕只有一个标签是这个类也是数组
+
+**以上三个都比较局限：拿元素的时候只能通过指定的属性去拿**
+
+### querySelect 和 querySelectAll
+
+​		querySelect 和 querySelectAll也可以获取元素，但是他们和上面不同的是，他们根据**选择器**去获取。也就是说只要选择器能选择到，他们
+​		就可以获取到，只要选择器写的对就可以获取到；
+
+​	querySelect专门用来获取选择器选中只有一个元素；返回的是单个元素dom对象;
+​	querySelectAll专门用来获取选择器选中多个元素，返回也是数组；
+
+##   鼠标事件
+
+ + style样式操作，操作元素样式
+	1.	鼠标事件: 
+		
+		```js
+		onmousemove/
+		
+		onmouseover/
+		
+		onmouseout/
+		
+		onmounseenter/
+		
+		onmouseleave
+		
+		onclick/onmousedown/onmouseup/ondbclik;
+		```
+		
+		​	简单案例   点击按钮修改元素的宽高以及背景色；
+
+##  兼容性封装设置读取内容函数
+
+浏览器兼容性讲解 IE8是个分水岭
+
+封装函数处理textContent和innerText的兼容性读写问题
+
+## textContent及innerText的区别
+
+​			·textContent 可以获取隐藏元素的文本，包含换行和空白
+​			·innerText 不可以获取，并且不包含换行和空格
+
+## 兼容性封装设置读取内容函数
+
+	1.	浏览器兼容性讲解
+
+		浏览器有很多：chrome和火狐   IE   Opera  safari  
+		浏览器最终分为两个阵营： 高级浏览器和IE低版本浏览器   IE8是分水岭
+	
+		innerText   什么浏览器都认识
+		textContent   只有高级浏览器认识  IE低版本不认识
+
+
+
+		console.log(box.textContent);  
+	
+		当我们的用户既存在使用高级浏览器的也有使用IE低版本的，那么此时，如果想要使用textContent 必须兼容性处理
+
+
+
+
+	2.	封装函数处理textContent和innerText的兼容性读写问题
+
+## keyup & keydown & focus & blur  
+
+	1.  keyup，keydown事件       一般用的都是keyup事件，它能够确保键盘事件只执行一次；
+	2.	keycode     存在于事件对象当中，也就是我们回调函数的第一个形参；这个对象不是我们创建，当事件发生的时候，系统会创建好
+			这个事件对象，并且传参调用；事件对象当中包含了和事件相关的一切；
+
+3.	focus，blur事件
+4.	案例:
+	1.	判断是否是回车事件 
+	2.	当失去焦点的时候让input的颜色随机改变（变色龙）
