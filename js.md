@@ -778,7 +778,7 @@ document.getElementByClassName   querySelect 和 querySelectAll获取dom元素
 ## 兼容性封装设置读取内容函数
 
 	1.	浏览器兼容性讲解
-
+	
 		浏览器有很多：chrome和火狐   IE   Opera  safari  
 		浏览器最终分为两个阵营： 高级浏览器和IE低版本浏览器   IE8是分水岭
 	
@@ -802,7 +802,142 @@ document.getElementByClassName   querySelect 和 querySelectAll获取dom元素
 	2.	keycode     存在于事件对象当中，也就是我们回调函数的第一个形参；这个对象不是我们创建，当事件发生的时候，系统会创建好
 			这个事件对象，并且传参调用；事件对象当中包含了和事件相关的一切；
 
-3.	focus，blur事件
-4.	案例:
-	1.	判断是否是回车事件 
-	2.	当失去焦点的时候让input的颜色随机改变（变色龙）
+3. focus，blur事件
+
+   # 节点
+
+## 子节点和子元素
+
+​		childNodes    拿到的是某个元素的子节点：包括元素子节点和文本子节点，如果有注释还有注释节点； 
+​		children
+​			子节点:childNodes (儿子节点):
+​			高级浏览器: 元素,文本(文本,空格,换行),注释
+​			低版本浏览器: 元素,文本(不包括空格和换行),注释
+​			子元素 children(儿子元素):
+​			高级浏览器:元素
+​			低版本浏览器:元素,注释
+
+
+
+## 父节点和父元素
+
+​	parentNode
+​	parentElement
+​		父节点:parentNode 其实就是父元素(标签) 所有浏览器都能使用
+​	 	父元素:parentElement 父标签   所有浏览器都能用
+
+## 获取其它节点：
+
+​		第一个子节点        都认识   firstChild
+​		第一个子元素节点    只有高级浏览器可以使用  firstElementChild
+​		最后一个节点      都认识   lastChild
+​		最后一个元素节点  只有高级浏览器可以使用  lastElementChild
+​		上一个兄弟节点    都认识  previousSibling
+​		上一个兄弟元素节点  只有高级浏览器可以使用 previousElementSibling
+​		下一个兄弟节点    都认识 nextSibling
+​		下一个兄弟元素节点  只有高级浏览器可以使用  nextElementSibling
+
+## 创建节点的三种方式
+
+Documet.write()   根本不用
+			 * 第一种创建节点的方式:document.write();
+			 * document.write()只能在页面加载的过程中使用,如果当页面加载完后,再使用会将其它的dom干掉
+				
+
+Obj.innerHtml  
+
+Document.createElement('想要创建的元素名') 
+元素对象.appendChild(被追加的元素对象);
+
+##  节点常用方法
+
+​	
+
+节点：  文档当中都是节点   元素  文本 属性  注释。。。。。。。
+节点的增删改查
+
+
+
+* 以下方法都是父元素调用,操作子元素
+* 插入节点: insertBefore(新节点,参照节点);
+* 替换节点: replaceChild(新节点,被替换的节点);
+* 删除节点: removeChild(被删除的节点);
+* 追加节点：appendChild(被追加的节点)；
+  节点.remove**（pc端 ie不支持）** 
+  案例：使用列表演示节点的增删改查
+
+## 事件绑定和解绑 
+
+​	dom0事件解绑  本质上就是把事件函数和事件对象的事件属性断开指向；
+​	box.onclick = null;
+
+Dom2事件绑定和解绑   
+   可以添加同一类事件多次
+   高级浏览器和ie绑定方式（兼容封装）
+
+## 事件流（事件传播）
+
+	1. 捕获事件流（网景）   最终很少用几乎不用
+	2. 冒泡事件流（ie）     最终我们所用的事件传播都是冒泡
+
+
+
+3. 标准DOM事件流     //这个是我们现用的最标准的事件流，里面包含三个阶段： 有捕获  再去获取元素    然最后冒泡
+
+## 阻止事件冒泡
+
+```js
+event.stopPropagation();
+```
+
+事件冒泡的好处就是可以进行事件委派（事件委托，事件代理）
+
+事件委托用法，
+	什么时候用：出现新添加的东西，并且新添加的东西要和老的拥有同样的行为；此时我们就想事件委派；
+
+​	事件委派的做法： 给爹添加事件，不给元素本身添加，事件发生后通过爹去找，真正发生事件的元素进行处理；
+
+好处，原理
+
+onmouseenter onmouseleave       如果是一个父子元素模型，对父元素添加移入和移出，当鼠标移入父元素里面的子元素的时候，事件并没有移出然后再移入。也就是说事件元素没有切换；
+
+onmouseover onmouseout 这两对之间的区别
+				 如果是一个父子元素模型，对父元素添加移入和移出，当鼠标移入父元素里面的子元素的时候，事件会移出然后再移入。也就是说事件元素会有切换；**事件委派的时候，必须使用这一对；**
+
+## 事件委派
+
+```js
+tBodyNode.addEventListener('click',function (event){
+    event = event || window.event;
+    var aNode = event.target
+    // let trnode = this.parentElement.parentElement;
+    //
+    // tBodyNode.removeChild(trnode);
+})
+```
+
+##  window对象是bom的顶级对象
+
+	1.  window对象概念，使用
+		function  add(){
+		}
+		add()
+		window.add()
+	2.  location  window.location可以让用户获取当前页面地址以及重定向到一个新的页面。
+			window.location.href   可以读也可以写，写的时候相当于转向另外一个页面
+
+	    history   对象包含浏览器的历史记录，window可以省略。这些历史记录以栈（FIFO）的形式保存。页面前进则入栈，页面返回则出栈。
+	    navigator 是一个只读对象，它用来描述浏览器本身的信息，包括浏览器的名称、版本、语言、系统平台、用户特性字符串等信息。
+	    screen    提供了用户显示屏幕的相关属性，比如显示屏幕的宽度、高度，可用宽度、高度。
+			
+	3.  window.onload
+	    window.onresize   //浏览器窗口发生改变，就会执行这个事件；
+## event 对象
+
+	1.  event概念，作用
+		系统给我们封装的，任何事件都会有这个event对象，就是回调函数的第一个形参；
+	2.  event兼容性处理
+	3.  event.target || event.srcElement作用
+	4.  clientX & clientY     拿的是鼠标相对视口的 水平距离和垂直距离   相对的是视口的左上角（以视口左上角为原点）
+            pageX pageY           拿的是鼠标相对页面的 水平距离和垂直距离   相对的是页面的左上角（以页面左上角为原点） 
+	    offsetX   offsetY     拿的是鼠标相对自身元素的 水平距离和垂直距离   相对的是自身元素左上角（以自身元素左上角为原点）
