@@ -972,3 +972,79 @@ clearTimeout(timer)
 
 input属性有个叫做disabled
 
+## 元素的大小和位置
+
+Offset系列    只读 
+			offsetWidth      拿的是盒子   内容 + padding + border的宽；
+			offsetHeight   	 拿的是盒子   内容 + padding + border的高；
+
+​		offsetLeft       拿的是元素的偏倚量：可以认为就是拿的定位left值
+​		offsetTop        拿的是元素的偏倚量：可以认为就是拿的定位top值
+
+​		案例：盒子左右摇摆
+
+
+​	
+
+​	Client系列    只读
+​		**clientWidth**      拿的是盒子   内容 + padding的宽；
+​		**clientHeight**     拿的是盒子   内容 + padding的高；
+
+​		**clientLeft**       拿的是盒子左边框大小；
+​		**clientTop**        拿的是盒子上边框大小；
+​		 
+​		视口宽高求法   
+​				document.documentElement.clientWidth
+​				document.documentElement.clientHeight
+
+  
+
+​	Scroll系列
+​		scrollWidth   只读  
+​				//当内容比盒子小的时候，拿的是盒子的clientWidth
+
+//					//当内容比盒子大的时候，拿的是内容的offsetWidth + 盒子的一侧内边距； 
+			scrollHeight  只读
+					//当内容比盒子小的时候，拿的是盒子的clientHeight
+//					//当内容比盒子大的时候，拿的是内容的offsetHeight + 盒子的一侧内边距；
+
+​		scrollTop     可写
+​				//拿的是盒子内容向上滚动的距离
+​		scrollLeft    可写
+​				//拿的是盒子内容向左滚动的距离
+
+
+​		
+
+​	元素的大小：宽和高的获取；
+​	以后我们拿元素的宽和高 先看元素有没有边框   如果没有边框    那么clientWidth和offsetWidth是一样的
+​				如果有边框，看你需要不，需要的话就用offsetWidth 不需要就用clientWidth;
+​				scrollWidth几乎不用；
+
+## 初始包含块及系统滚动条的控制
+
+​	
+
+​    html和body这两个元素overflow的scroll属性，控制着系统的滚动条
+​    系统的滚动条有两个，一个是body身上的  一个是document身上的。我们平时看到的那个滚动条
+​    是document身上的。，如果我们想要控制系统滚动条哪个显示哪个关闭分以下情况：
+
+​    1、单独的给body或者html 设置overflow:scroll  滚动条打开的全部都是document的
+
+​    2、如果两个元素同时设置overflow属性，body设置的是scroll,html设置是hidden,那么
+​    document的滚动条被关闭，body身上的滚动条会打开。相反，body身上被关闭，document身上的被打开。
+
+​    3、如果两个元素同时设置overflow:hidden；那么系统的两个滚动条全部被关闭；
+
+​    4、**如果两个都设置overflow:scroll,那么html会打开document身上的，而body会打开自己身上的滚动条；**
+
+###     由此我们也引出如何禁止系统的滚动条：
+
+
+```html
+html,body{
+	height:100%;    //这个属性加上只是为了让设置的overflow:hidden;更有说服力，只有内容超出才会被掩藏或者出现滚动条
+			//如果不设置，那么body和html高度将由内容自动撑开，也就是说body当中的内容永远不会溢出。
+	overflow:hidden;
+}
+```
