@@ -925,7 +925,7 @@ tBodyNode.addEventListener('click',function (event){
 		window.add()
 	2.  location  window.location可以让用户获取当前页面地址以及重定向到一个新的页面。
 			window.location.href   可以读也可以写，写的时候相当于转向另外一个页面
-
+	
 	    history   对象包含浏览器的历史记录，window可以省略。这些历史记录以栈（FIFO）的形式保存。页面前进则入栈，页面返回则出栈。
 	    navigator 是一个只读对象，它用来描述浏览器本身的信息，包括浏览器的名称、版本、语言、系统平台、用户特性字符串等信息。
 	    screen    提供了用户显示屏幕的相关属性，比如显示屏幕的宽度、高度，可用宽度、高度。
@@ -939,5 +939,36 @@ tBodyNode.addEventListener('click',function (event){
 	2.  event兼容性处理
 	3.  event.target || event.srcElement作用
 	4.  clientX & clientY     拿的是鼠标相对视口的 水平距离和垂直距离   相对的是视口的左上角（以视口左上角为原点）
-            pageX pageY           拿的是鼠标相对页面的 水平距离和垂直距离   相对的是页面的左上角（以页面左上角为原点） 
+	        pageX pageY           拿的是鼠标相对页面的 水平距离和垂直距离   相对的是页面的左上角（以页面左上角为原点） 
 	    offsetX   offsetY     拿的是鼠标相对自身元素的 水平距离和垂直距离   相对的是自身元素左上角（以自身元素左上角为原点）
+
+# 定时器
+
+单次定时器： 一般用来做延迟效果   定时炸弹 
+		    案例 求出结果延迟5秒打印  
+
+```js
+timer = setTimeout(function(){
+    console.log('5');
+},5000);
+clearTimeout(timer)
+//清除定时器
+```
+
+多次定时器： 和循环类似    闹钟
+	    案例  每隔3秒打印i love you!
+
+```js
+timer = setInterval(function(){
+console.log('i love you');
+},3000);
+//同样可以清除
+clearTimeout(timer)
+```
+
+清除定时器：
+	    清除单次定时器
+	    清除多次定时器
+
+input属性有个叫做disabled
+
