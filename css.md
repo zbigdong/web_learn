@@ -729,3 +729,91 @@ stretch；拉伸使元素充满盒子
 
 **align-items设置对齐方式**
 
+# 总结
+
+
+	
+
+## 居中：
+
+## 	文本在div居中心
+
+​		text-align:center
+​		line-height:DIV高度
+
+## 	行内在div
+
+​		text-align:center
+​		line-height:DIV高度
+
+## 	行内块在div
+
+​		position:absolute;
+​		left:0
+​		top:0
+​		right:0
+​		bottom:0
+​		margin:auto
+​		行内块必须设置宽高
+
+## 	块级在块级
+
+​		position:absolute;
+​		left:0
+​		top:0
+​		right:0
+​		bottom:0
+​		margin:auto
+
+## 		行内块必须设置宽高
+
+​		position:absolute;
+​		left:50%
+​		top:50%
+​		transform:translate(-50%,-50%);
+
+
+
+​		position:absolute;
+​		left:50%
+​		top:50%
+​		margin-left: -盒子的一半;
+​		margin-top: -盒子的一半;
+​		行内块必须设置宽高
+
+transform 覆盖
+transition  只会检测起始和结束
+
+
+​	
+
+## 设置文本溢出变为...
+
+​	只能给块和行内块设置
+​	行内不能设置，因为行内本来就是文本
+​	overflow:hidden
+​	text-oveflow:ellipsis;
+​	white-space:nowrap;
+
+
+​				
+
+## 元素隐藏：
+
+​	display
+​	visibility
+​	opacity
+​	width
+​	height
+​	transform:  translateX  translateY  rotateY  rotateX   scale
+
+
+​								
+​				    
+
+​	rotate(效果和rotateZ)是一样的
+
+
+​		
+
+### 3d变换如果不开启父元素3D空间：那么子元素设置了3D变换的元素，层级高出来
