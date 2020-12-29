@@ -14,8 +14,15 @@
 
 ## const使用及特点
 
-1. 声明一个变量，变量的值无法更改，也是块级作用
-2. const定义的变量不可以修改，而且必须初始化
+声明一个变量，变量的值无法更改，也是块级作用
+
+const定义的变量不可以修改，而且必须初始化
+
+
+
+## for in一般用于遍历对象
+
+可以枚举原型的属性
 
 #  string方法 **ES5**
 
@@ -78,61 +85,69 @@ var str = '1*234567890123A';
 
 **不传参数**，将不会按照数值大小排序，按照字符编码的顺序进行排序；
 
-		var arr = ['General','Tom','Bob','John','Army'];
-		var resArr = arr.sort();
-		console.log(resArr);//输出   ["Army", "Bob", "General", "John", "Tom"]
-		
-		var arr2 = [30,10,111,35,1899,50,45];
-		var resArr2 = arr2.sort();
-		console.log(resArr2);//输出   [10, 111, 1899, 30, 35, 45, 50]
+```js
+	var arr = ['General','Tom','Bob','John','Army'];
+	var resArr = arr.sort();
+	console.log(resArr);//输出   ["Army", "Bob", "General", "John", "Tom"]
+	
+	var arr2 = [30,10,111,35,1899,50,45];
+	var resArr2 = arr2.sort();
+	console.log(resArr2);//输出   [10, 111, 1899, 30, 35, 45, 50]
+```
 
 **传入参数，**实现升序，降序；
 
-		var arr3 = [30,10,111,35,1899,50,45];
-		arr3.sort(function(a,b){
-			return a - b;
-		})
-		console.log(arr3);//输出  [10, 30, 35, 45, 50, 111, 1899]
-		
-		var arr4 = [30,10,111,35,1899,50,45];
-		arr4.sort(function(a,b){
-			return b - a;
-		})
-		console.log(arr4);//输出 [1899, 111, 50, 45, 35, 30, 10]
+```js
+	var arr3 = [30,10,111,35,1899,50,45];
+	arr3.sort(function(a,b){
+		return a - b;
+	})
+	console.log(arr3);//输出  [10, 30, 35, 45, 50, 111, 1899]
+	
+	var arr4 = [30,10,111,35,1899,50,45];
+	arr4.sort(function(a,b){
+		return b - a;
+	})
+	console.log(arr4);//输出 [1899, 111, 50, 45, 35, 30, 10]
+```
 
 根据数组中的对象的某个属性值排序；
 
-		var arr5 = [{id:10},{id:5},{id:6},{id:9},{id:2},{id:3}];
-		arr5.sort(function(a,b){
-			return a.id - b.id
-		})
-		console.log(arr5);
-		//输出新的排序
-		//		{id: 2}
-		//		{id: 3}
-		//		{id: 5}
-		//		{id: 6}
-		//		{id: 9}
-		//		{id: 10}
+```js
+	var arr5 = [{id:10},{id:5},{id:6},{id:9},{id:2},{id:3}];
+	arr5.sort(function(a,b){
+		return a.id - b.id
+	})
+	console.log(arr5);
+	//输出新的排序
+	//		{id: 2}
+	//		{id: 3}
+	//		{id: 5}
+	//		{id: 6}
+	//		{id: 9}
+	//		{id: 10}
+```
 
 根据数组中的对象的多个属性值排序，多条件排序；
 
-		var arr6 = [{id:10,age:2},{id:5,age:4},{id:6,age:10},{id:9,age:6},{id:2,age:8},{id:10,age:9}];
-		arr6.sort(function(a,b){
-			if(a.id === b.id){//如果id相同，按照age的降序
-				return b.age - a.age
-			}else{
-				return a.id - b.id
-			}
-		})
-		console.log(arr6);
-		//输出新的排序
-		//		{id: 2, age: 8}
-		//		{id: 5, age: 4}
-		//		{id: 6, age: 10}
-		//		{id: 9, age: 6}
-		//		{id: 10, age: 9}
-		//		{id: 10, age: 2}
+```js
+	var arr6 = [{id:10,age:2},{id:5,age:4},{id:6,age:10},{id:9,age:6},{id:2,age:8},{id:10,age:9}];
+	arr6.sort(function(a,b){
+		if(a.id === b.id){//如果id相同，按照age的降序
+			return b.age - a.age
+		}else{
+			return a.id - b.id
+		}
+	})
+	console.log(arr6);
+	//输出新的排序
+	//		{id: 2, age: 8}
+	//		{id: 5, age: 4}
+	//		{id: 6, age: 10}
+	//		{id: 9, age: 6}
+	//		{id: 10, age: 9}
+	//		{id: 10, age: 2}
+```
 
 # Array方法 **ES5 + ES6**
 
@@ -150,21 +165,28 @@ var str = '1*234567890123A';
 	5. Array.prototype.filter(function(item, index){}) : 遍历过滤出一个新的子数组， 返回条件为true的值
 
 
-		arr = [1,23];
-		arr.forEach(function(item,index){
-			console.log(item);
-		})
-		
-		console.log(arr.map(function(item,index){
-			return item * 2;
-		}))	
+```js
+	arr = [1,23];
+	arr.forEach(function(item,index){
+		console.log(item);
+	})
+	
+	console.log(arr.map(function(item,index){
+		return item * 2;
+	}))	
+```
 
-
-​		
-​		console.log(arr.filter(function(item,index){
+```js
+		console.log(arr.filter(function(item,index){
 ​			return item >= 2;
 ​		}))
-## ES6
+```
+
+## 
+
+
+
+## ES6(15)ECMA2015
 
 ```js
 1. Array.from(v) : 将伪数组对象或可遍历对象转换为真数组
@@ -185,3 +207,22 @@ var str = '1*234567890123A';
 
 所有的方法都要注意三要素；
 ```
+
+## ES7(16年)ECMA2016 
+
+## object ES5
+
+### object.create (protootype,[descriptors])
+
+作用以指定对象的原型链创建新的对象
+
+微信的对象制定新的属性，并对属性进行描述
+
+value；指定值
+
+writeable : 标识当前属性值是否可以修改默认为false
+
+configurable  标识当前属性是否可以被删除 , 默认为 false
+
+enumerable  标识当前属性是否能用 for in 枚举 默认为 false
+

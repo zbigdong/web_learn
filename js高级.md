@@ -64,35 +64,128 @@ js只有堆内存 但是有一块类似于堆
 
 ## 函数的this
 
-      1. 理解this：
-         - 关键字
-         - 变量
-      2. this的指向问题
-         - 函数this不是函数定义的时候决定的
-         - 函数this指向谁看如何调用当前的函数
-      3. this指向分类
-         - 函数自调用： window
-         - 构造函数(new function): 当前构造函数的实例对象
-         - 对象.方法(): 对象本身
-         - fun.call/apply(指定的对象): 指定的对象  用于修改this的指向（强制绑定this)
-         that一般用于缓存this;
+```js
+  1. 理解this：
+     - 关键字
+     - 变量
+  2. this的指向问题
+     - 函数this不是函数定义的时候决定的
+     - 函数this指向谁看如何调用当前的函数
+  3. this指向分类
+     - 函数自调用： window
+     - 构造函数(new function): 当前构造函数的实例对象
+     - 对象.方法(): 对象本身
+     - fun.call/apply(指定的对象): 指定的对象  用于修改this的指向（强制绑定this)
+     that一般用于缓存this;
+
+```
+
+# js的继承
+
+## 原型链继承
+
+    1. 核心思想
+        - 子类的原型 成为 父类的实例
+        - Child.prototype = new Parent()
+    2. 注意问题：
+        - 以上的写法会导致子类的构造器属性丢失
+    3. 解决问题
+        - Child.prototype.constructor = Child
+
+ 
+
+
+```js
+       
+         function Person(name, age) {
+            this.name = name;
+            this.age = age;
+          }
+          Person.prototype.showName = function () {
+            console.log(this.name);
+          }
+          var person1 = new Person('kobe', 43);
+```
+
+
+​          子类的原型等于弗雷的实例
+
+```js
+      // 原型继承： 子类的原型 成为 父类的实例
+      // Child.prototype = {constructor: Child}
+      Child.prototype = new Person();
+      Child.prototype.constructor = Child;
+      // 定义一个child类
+      function Child(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      
+      var child1 = new Child('xiaoming', 18);
+    
+      console.log(child1);
+      child1.showName();
+```
+
+## 借用构造函数继承(不是真的继承) 
+
+```js
+1. 核心思想
+    - 让父类的方法在子类中执行
+2. 注意问题：
+    - 如果父类的方法在子类中直接调用，会导致在window对象身上添加了不必要的属性
+3. 解决问题：
+    - 使用call || apply
+    - Parent.call(子类的实例对象， 参数)
+    - Parent.call(this, 参数)
+     function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.showName = function (){
+        console.log(this.name);
+    }
+
+    function Child(name,age,sex){
+        //chiild 的实例对象等于this
+        Person.call(this,name,age)
+        this.sex = sex;
+        console.log(this);
+    }
+//子类的原型成为父类的实例
+    Child.prototype = new Person();
+    //构造器丢了人为添加
+    Child.prototype.constructor = Child;
+    c1 = new Child('kIk',12,'male')
+```
+
+## 组合继承
+
+1. **核心思想： 原型继承 + 借用构造函数继承**
+
+
+​    
 
 # 原型
 
 ## 什么是原型对象
 
-    1. 每个函数都有一个prototype属性，该属性指向的是原型对象(显示原型对象)
-    2. 每个实例对象身上都有一个__proto__属性，该属性指向的也是原型对象(隐式原型对象)
-    3. 构造函数的显示原型 === 当前构造函数实例对象的隐式原型对象
-    4. 原型对象的本质： 普通的Object实例***
-    原型对象一定有一个隐式对象方便系统查找 直到Object的原型对象的__proto__指向null;
+```js
+1. 每个函数都有一个prototype属性，该属性指向的是原型对象(显示原型对象)
+2. 每个实例对象身上都有一个__proto__属性，该属性指向的也是原型对象(隐式原型对象)
+3. 构造函数的显示原型 === 当前构造函数实例对象的隐式原型对象
+4. 原型对象的本质： 普通的Object实例***
+原型对象一定有一个隐式对象方便系统查找 直到Object的原型对象的__proto__指向null;
+```
 
 ## 什么是原型链
 
-    1. 查找对象的属性的时候现在自身找，如果自身没有沿着__proto__找原型对象
-    2. 如果原型对象上还没有，继续沿着__proto__,直到找到Object的原型对象对象
-    3. 如果还没有找到返回undefined
-    4. 原型链： 沿着__proto__查找的这条链就是原型链
+```js
+1. 查找对象的属性的时候现在自身找，如果自身没有沿着__proto__找原型对象
+2. 如果原型对象上还没有，继续沿着__proto__,直到找到Object的原型对象对象
+3. 如果还没有找到返回undefined
+4. 原型链： 沿着__proto__查找的这条链就是原型链
+```
 
 
 
@@ -105,7 +198,6 @@ js只有堆内存 但是有一块类似于堆
 5. 预解析： 全局预解析，局部预解析
 
 
-​    
 ​    
 
 ## 执行上下文
@@ -151,6 +243,7 @@ js只有堆内存 但是有一块类似于堆
     2. 将this指向该空对象
     3. 执行函数
     4. 将执行的结果返回
+    person.call(this,name,sex);
 
 # 作用域
 
@@ -204,3 +297,57 @@ js只有堆内存 但是有一块类似于堆
 
    - 及时清除闭包
    - 让内部的函数成为垃圾对象 ---> 内部函数身上没有指针指向
+
+## 进程
+
+程序一次执行它占有独有的内存空间
+
+## 线程
+
+cpu调度的基本单位，是程序执行的完整流程
+
+# 关系
+
+一个进程中至少有一个运行的线程：主线程
+
+一个进程中也可以同时运行多个线程，我们会说程序使多线程序运行的
+
+一个进程内的数据可以供其中的多个线程直接共享
+
+多个进程之间的数据不能直接共享
+
+浏览器老版本firefox和老IE使单进程，chrome和新版ie使多进程
+
+# js事件循环机制
+
+
+
+1. js是单线程的 ---> 主线程--》会阻塞
+2. 同步任务 || 异步任务
+    - 同步： 1. 阻塞的 2. 同步是没有回调的
+    - 异步： 1. 非阻塞 2. 异步有回调(用来通知当前异步任务执行的结果)
+3. 定时器真的准时吗?不一样
+    - 特例：定时器任务的后边有运算量大的代码段
+4. 事件轮询机制：
+    - 1. js任务都会在js的主线程执行
+    - 2. 当开启一个异步任务的时候会交给对应的管理模块去管理
+    - 3. 主线程继续执行后续的任务
+    - 4. 管理模块接管的对应的回调，它会在恰当的时机将对应的回调放入callback queue中
+    - 5. 当主线程上的所有同步任务执行完毕会通过 ‘轮询’的方式询问callback queue是否有可执行的回调
+    - 6. 假如没有会反复询问
+    - 7. 假如有可执行的回调将对应的回调钩到主线程执行
+ 5. 开发注意事项；
+    - **不要在定时器任务之后放置运算量大的代码段**；
+
+![事件循环模型](D:\web_learn\事件循环模型.png)
+
+**永远不要放在定时器后面计算量较大的函数**
+
+# 浏览器内核
+
+**chrome，safari**；webkit
+
+**firefox**:gecko
+
+**ie**:Trident;
+
