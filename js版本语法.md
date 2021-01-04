@@ -83,7 +83,7 @@ var str = '1*234567890123A';
 
 ​		
 
-**不传参数**，将不会按照数值大小排序，按照字符编码的顺序进行排序；
+**不传参数**，将不会按照数值大小排序，**按照字符编码的顺序**进行排序；
 
 ```js
 	var arr = ['General','Tom','Bob','John','Army'];
@@ -182,11 +182,11 @@ var str = '1*234567890123A';
 ​		}))
 ```
 
-## 
 
 
 
-## ES6(15)ECMA2015
+
+## ES6 ECMA2015
 
 ```js
 1. Array.from(v) : 将伪数组对象或可遍历对象转换为真数组
@@ -208,6 +208,220 @@ var str = '1*234567890123A';
 所有的方法都要注意三要素；
 ```
 
+###  let
+
+作用：同var一样来声明变量
+
+变量提升：
+
+全局变俩提升
+
+会创建一个变量对象（scipt)用来手集全局作用域下let定义的变量，但是没有赋值
+
+局部变量提升
+
+会将var let定义的变量全部放到当前函数的变量对象中
+
+
+
+**在块作用域内有效**，**不能重复声名**，**会预处理有变量提升但是不能提前使用提升的变量**
+
+### const
+
+常量不允许修改
+
+### 解构赋值
+
+根据key索取value
+
+数组按照index索取
+
+```js
+let obj = {name:'kk',age:12,sex:'male'}
+
+let name,age =obj2;
+
+console.log(name,age)//kk,12
+let arr = [4,423,32,324,421,32,1,2,3,4]
+ function fun({name,age}){
+        //利用函数的形参解构实参
+        console.log(name,age)
+
+    }
+    fun(obj)
+```
+
+### 模板字符串
+
+```js
+let str1 = `我的名字叫${obj.name}我${obj.age}岁`;
+```
+
+### 简化对象写法
+
+```js
+let names = 'kobe';
+let ages = 33
+let obj3 = {
+    //同名属性可以省略 key和value一样的时候
+    ages,
+    names,
+    showName(){//省略函数等function:
+        console.log(this.names);
+    }
+}
+console.log(obj3)
+obj3.showName();
+```
+
+### 箭头函数
+
+1. 简洁
+
+2. 箭头函数没有自己的this,箭头函数的this不是调用的时候决定的，而是在定义的时候处在的对象就是它的this
+
+3. 扩展理解：箭头函数的this看外层的是否有函数
+
+   如果有，外层函数的this就是内部箭头函数的this。
+
+   如果没有，则this是window.
+
+### 点点点运算符
+
+第二次学习arguments用来收集实参的伪数组
+
+不能直接去遍历对象只能遍历数组
+
+```js
+function fun(a,...values){
+    //三点运算符必须放在最后
+    console.log(arguments)
+    // arguments.forEach()
+    values.forEach(function (item,index){
+        //item是值，index 是索引
+        console.log(item,index);
+    });
+}
+//第二次学习arguments用来收集实参的伪数组
+fun(1,2,3,4);
+```
+
+### 形参默认值
+
+```js
+function fun3(ar = []){
+    arr.forEach(function (item,index){
+        console.log(item,index);
+    })
+}
+```
+
+### symbol
+
+```js
+let stmbol = Symbol('one')
+console.log(stmbol);
+let symbol = Symbol('two');
+console.log(stmbol === symbol)
+```
+
+### Iterator 遍历器（迭代器）
+
+for of -->**Symbol.iterator**
+
+```js
+    function iteratorUtil() {
+           // iterator接口：方法||api
+        console.log('迭代器执行');
+        console.log(this)//window
+        let index = 0;
+        return {
+            next: () => {
+                // console.log(this)//window
+
+                return index < this.length ? {value: this[index++], done: false} : {value: this[index++], done: true}
+            }
+        }
+    }
+ Array.prototype[Symbol.iterator] = iteratorUtil;
+    for( let i of arr2){
+        console.log(i)
+     }
+```
+
+### class
+
+1. 通过class定义类实现类的继承
+2. 在类中通过constructor定义构造方法
+3. 通过new来创建的实例
+4. 通过extends来实现类的继承
+5. 通过super调用父类的构造方法
+6. 重写从父类中继承的一般方法
+
+### 字符串扩展
+
+includes(str)判断是否包含指定的字符串
+
+startsWith(str)判断是否已制定字符串开头
+
+endsWith(str)判断是否以指定字符串结尾
+
+repeat（count)指定字符串重复次数
+
+### 数值扩展
+
+二进制与八进制表示方法：二进制0b八进制0o
+
+Number.isFiniter(i)：判断是否是有限大的数
+
+ 判断是否有整数 NaN 直接去除小数 将字符串转换为相应数值 直接去除小数
+
+### 数组扩展
+
+Array.from(v) 将为数组或可遍历对象转化为真数组
+
+Array.of(v1,v2,v3)将一系列值转化为数组
+
+find(fun)找出第一个满足条件反返回true的元素
+
+```js
+let arr = [2,5,4,6,43,643,12];
+let result = arr.find(function (item,index){
+    if(item>=5){
+        console.log(item);
+        // return true;
+    }
+    
+})
+```
+
+findindex(fun)找出第一个满足条件的返回true的元素下标
+
+### 对象扩展
+
+1 Object.is(1,2)判断两个数据是否完全相等
+
+2 Object.assign(target,source1,source2..)
+
+将对象的原属性复制到目标对象上
+
+该操作会将后面的对象覆盖到前面对象
+
+有两种叫法克隆 拷贝
+
+```
+3 直接操作_proto_属性
+let obj2 = {};
+obj2._proto_ = obj1;
+
+```
+
+
+
+
+
+
+
 ## ES7(16年)ECMA2016 
 
 ## object ES5
@@ -225,4 +439,10 @@ writeable : 标识当前属性值是否可以修改默认为false
 configurable  标识当前属性是否可以被删除 , 默认为 false
 
 enumerable  标识当前属性是否能用 for in 枚举 默认为 false
+
+
+
+
+
+null 和对象typeof的值都是object
 
