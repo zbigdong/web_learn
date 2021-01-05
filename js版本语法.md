@@ -416,9 +416,17 @@ obj2._proto_ = obj1;
 
 ```
 
+### 容器
 
+set map
 
+set会自动去重
 
+数组去重
+
+```js
+let uniqArr2 = arr =>[...new Set(arr)];
+```
 
 
 
