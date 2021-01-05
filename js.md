@@ -1085,9 +1085,13 @@ transform: translateX(-50%);
 
 ### 1、js的写法    三种
 
-​	<input onclick="alert()">
+```
+	<input onclick="alert()">
 ​	内嵌
 ​	外链   <script src="文件路径"></script>
+```
+
+
 
 ### 2、变量  变量的本质（内存）   
 
